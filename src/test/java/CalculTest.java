@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -60,5 +63,38 @@ public class CalculTest {
         assertEquals(result,16d);
 //        fail("erreur puissance");
     }
+
+
+
+    @ParameterizedTest(name = "A {0} add B {1}  equals {2}")
+    @CsvSource({
+            "1.2,2.3,3.5",
+            "2.2,,",
+            ",2.3,",
+            "4.2,2.3,6.5"
+    }
+    )
+    void addParametrized(Double a,Double b ,Double result){
+
+        assertEquals(result, Calcul.addition(a,b));
+
+    }
+
+
+    @ParameterizedTest(name = "A {0} div by B {1}  equals {2}")
+    @CsvSource({
+            "1.2,2.3,0.5217391304347826",
+            "2.2,,",
+            ",2.3,",
+            "5.3,0,Infinity",
+            "4.2,2,2.1"
+    }
+    )
+    void divParametrized(Double a,Double b ,Double result){
+
+        assertEquals(result, Calcul.division(a,b));
+
+    }
+
 
 }
