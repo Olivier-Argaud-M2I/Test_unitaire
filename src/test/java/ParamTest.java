@@ -4,10 +4,15 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ParamTest{
 
+    Set<Integer> monSet;
 
     private HelloWorld hw;
 
@@ -63,7 +68,10 @@ public class ParamTest{
     public void testParam2(String input, String resultat ){
         String resultatObtenu= this.hw.sayHello(input);
 
-        assertEquals(resultat,resultatObtenu);
+//        assertEquals(resultat,resultatObtenu);
+//        assertTrue(resultat.equals(resultatObtenu));
+        assertThat(resultatObtenu).isEqualTo(resultat);
+//        assertThat(monSet).containsExactlyInAnyOrder(1,2,3,4,5,6);
     }
 
     @DisplayName(value = "sous ensemble pour test")

@@ -3,6 +3,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -16,7 +19,10 @@ public class CalculTest {
 
         Double result = Calcul.addition(A,B);
 
-        assertEquals(result,5d);
+//        assertEquals(result,5d);
+
+        assertThat(result).isEqualTo(5d);
+
 //        fail("erreur addition");
     }
 
@@ -27,7 +33,8 @@ public class CalculTest {
 
         Double result = Calcul.soustraction(A,B);
 
-        assertEquals(result,-1d);
+//        assertEquals(result,-1d);
+        assertThat(result).isEqualTo(-1d);
 //        fail("erreur soustraction");
     }
 
@@ -38,7 +45,8 @@ public class CalculTest {
 
         Double result = Calcul.division(A,B);
 
-        assertEquals(result,0.5d);
+//        assertEquals(result,0.5d);
+        assertThat(result).isEqualTo(0.5d);
 //        fail("erreur division");
     }
 
@@ -49,7 +57,8 @@ public class CalculTest {
 
         Double result = Calcul.multiplication(A,B);
 
-        assertEquals(result,8d);
+//        assertEquals(result,8d);
+        assertThat(result).isEqualTo(8d);
 //        fail("erreur multiplication");
     }
 
@@ -60,7 +69,8 @@ public class CalculTest {
 
         Double result = Calcul.puissance(A,B);
 
-        assertEquals(result,16d);
+//        assertEquals(result,16d);
+        assertThat(result).isEqualTo(16d);
 //        fail("erreur puissance");
     }
 
@@ -76,8 +86,8 @@ public class CalculTest {
     )
     void addParametrized(Double a,Double b ,Double result){
 
-        assertEquals(result, Calcul.addition(a,b));
-
+//        assertEquals(result, Calcul.addition(a,b));
+        assertThat(result).isEqualTo( Calcul.addition(a,b));
     }
 
 
@@ -92,7 +102,12 @@ public class CalculTest {
     )
     void divParametrized(Double a,Double b ,Double result){
 
-        assertEquals(result, Calcul.division(a,b));
+//        System.out.println(result);
+//        result = Double.POSITIVE_INFINITY;
+//
+//        Integer test = Integer
+//        assertEquals(result, Calcul.division(a,b));
+        assertThat(result).isEqualTo( Calcul.division(a,b));
 
     }
 
