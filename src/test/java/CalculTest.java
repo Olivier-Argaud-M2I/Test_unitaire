@@ -1,4 +1,6 @@
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -9,8 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+@ExtendWith(Log4jExtension.class)
 public class CalculTest {
 
+    private Logger logger;
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 
     @Test
     void addition(){
@@ -22,7 +30,7 @@ public class CalculTest {
 //        assertEquals(result,5d);
 
         assertThat(result).isEqualTo(5d);
-
+        logger.info("on test l'addition");
 //        fail("erreur addition");
     }
 

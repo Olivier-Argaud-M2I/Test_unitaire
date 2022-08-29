@@ -39,7 +39,14 @@ public class ParamTest{
         assertEquals(result,true);
     }
 
+    @ParameterizedTest(name = "{0} n'est pas pair")
+    @ValueSource(ints = {-1,3,7,13})
+    public void notPair(int a){
 
+        Boolean result = Calcul.pair(a);
+
+        assertEquals(result,false);
+    }
 
 
 
