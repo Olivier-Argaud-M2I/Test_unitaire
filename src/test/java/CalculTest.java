@@ -101,7 +101,7 @@ public class CalculTest {
 
     @ParameterizedTest(name = "A {0} div by B {1}  equals {2}")
     @CsvSource({
-            "1.2,2.3,0.5217391304347826",
+            "1.2,2.3,0.52",
             "2.2,,",
             ",2.3,",
             "5.3,0,Infinity",

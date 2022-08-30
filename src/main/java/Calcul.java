@@ -5,22 +5,25 @@ public class Calcul {
         if(A==null || B==null){
             return null;
         }
-        return A+B;
+        return (double) Math.round((A + B) * 100) /100;
     }
 
     public static Double soustraction(Double A, Double B){
-        return A-B;
+        return (double) Math.round((A - B) * 100) /100;
     }
 
     public static Double division(Double A, Double B){
         if(A==null || B==null){
             return null;
         }
-        return A/B;
+        if(B == 0){
+            return A/B;
+        }
+        return (double) Math.round(A / B * 100) /100;
     }
 
     public static Double multiplication(Double A, Double B){
-        return A*B;
+        return (double) Math.round(A * B * 100) /100;
     }
 
     public static Double puissance(Double A,Double B){
