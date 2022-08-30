@@ -1,72 +1,43 @@
+import services.DataSourceImpl;
 import utils.Affichage;
 import utils.SaisieConsole;
 
 public class Calculatrice {
 
-    public Calculatrice(){
+    private Integer operation;
+    private Double a;
+    private Double b;
 
+    public Calculatrice(DataSourceImpl dataSource) {
+        this.operation = dataSource.getData().getOperation();
+        this.a = dataSource.getData().getA();
+        this.b = dataSource.getData().getB();
+    }
 
-        SaisieConsole saisieConsole = new SaisieConsole();
-        Affichage.formatLigne("choissez votre operation");
-        Affichage.formatLigne(" 1 --- addition");
-        Affichage.formatLigne(" 2 --- soustraction");
-        Affichage.formatLigne(" 3 --- division");
-        Affichage.formatLigne(" 4 --- multiplication");
-        Affichage.formatLigne(" 5 --- puissance");
-        Integer operation = saisieConsole.entier();
+    public Double retourOperation(){
 
         switch (operation){
             case 1:{
-                Double a = saisie("Veuillez saisir votre premier nombre");
-                Double b = saisie("Veuillez saisir votre deuxieme nombre");
-                afficheResult("addition",Calcul.addition(a,b));
-                break;
+                return Calcul.addition(a,b);
             }
             case 2:{
-                Double a = saisie("Veuillez saisir votre premier nombre");
-                Double b = saisie("Veuillez saisir votre deuxieme nombre");
-                afficheResult("soustraction",Calcul.soustraction(a,b));
-                break;
-
+                return Calcul.soustraction(a,b);
             }
             case 3:{
-                Double a = saisie("Veuillez saisir votre premier nombre");
-                Double b = saisie("Veuillez saisir votre deuxieme nombre");
-                afficheResult("division",Calcul.division(a,b));
-                break;
-
+                return Calcul.division(a,b);
             }
             case 4:{
-                Double a = saisie("Veuillez saisir votre premier nombre");
-                Double b = saisie("Veuillez saisir votre deuxieme nombre");
-                afficheResult("multiplication",Calcul.multiplication(a,b));
-                break;
-
+                return Calcul.multiplication(a,b);
             }
             case 5:{
-                Double a = saisie("Veuillez saisir votre premier nombre");
-                Double b = saisie("Veuillez saisir votre deuxieme nombre");
-                afficheResult("puissance",Calcul.puissance(a,b));
-                break;
-
+                return Calcul.puissance(a,b);
             }
         }
 
-
-
-
-
-    }
-
-    public Double saisie(String text){
-        SaisieConsole saisieConsole = new SaisieConsole();
-        Affichage.formatLigne(text);
-        return saisieConsole.monDouble();
+        return null;
     }
 
 
-    public void afficheResult(String operation, Double result){
-        Affichage.formatLigne("Le resultat de votre "+operation+ " est "+result);
-    }
+
 
 }
